@@ -60,8 +60,8 @@ export default {
   },
 
   methods: {
-    initialize () {
-      this.desserts = require('../assets/data.js').default()
+    async initialize () {
+      this.desserts = await (await fetch('./data.json')).json()
       console.log('Desserts object', this.desserts);
     },
 

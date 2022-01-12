@@ -77,8 +77,8 @@ export default {
 
 
   methods: {
-    initialize () {
-      this.desserts = require('../assets/data.js').default().map(item => deepFreeze(item))
+    async initialize () {
+      this.desserts = (await (await fetch('./data.json')).json()).map(item => deepFreeze(item))
       console.log('Desserts object', this.desserts);
     },
 
