@@ -1,3 +1,21 @@
+<script>
+import DataTableReactive from './components/DataTableReactive';
+import DataTableNonReactive from './components/DataTableNonReactive';
+
+export default {
+  name: 'App',
+
+  components: {
+    DataTableReactive,
+    DataTableNonReactive,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 <template>
   <v-app>
     <v-app-bar
@@ -38,23 +56,9 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <DataTableReactive/>
+      <VDivider class="ma-12" />
+      <DataTableNonReactive/>
     </v-main>
   </v-app>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
-</script>
