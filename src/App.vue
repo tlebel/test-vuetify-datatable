@@ -37,6 +37,7 @@ export default {
 
       <v-tabs align-with-title>
         <v-tab to="/">Non Reactive</v-tab>
+        <v-tab to="/2">Non Reactive 2</v-tab>
         <v-tab to="/reactive">Reactive</v-tab>
       </v-tabs>
 

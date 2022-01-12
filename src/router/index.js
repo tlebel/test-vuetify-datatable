@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import DataTableNonReactive from '../components/DataTableNonReactive';
+import NonReactive2 from '../views/NonReactive2';
 
 Vue.use(VueRouter)
 
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'Non Reactive',
     component: DataTableNonReactive
+  },
+  {
+    path: '/2',
+    name: 'Non Reactive 2',
+    component: NonReactive2
   },
   {
     path: '/Reactive',
