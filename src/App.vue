@@ -1,14 +1,6 @@
 <script>
-import DataTableReactive from './components/DataTableReactive';
-import DataTableNonReactive from './components/DataTableNonReactive';
-
 export default {
   name: 'App',
-
-  components: {
-    DataTableReactive,
-    DataTableNonReactive,
-  },
 
   data: () => ({
     //
@@ -43,6 +35,11 @@ export default {
         />
       </div>
 
+      <v-tabs align-with-title>
+        <v-tab to="/">Non Reactive</v-tab>
+        <v-tab to="/reactive">Reactive</v-tab>
+      </v-tabs>
+
       <v-spacer></v-spacer>
 
       <v-btn
@@ -56,9 +53,7 @@ export default {
     </v-app-bar>
 
     <v-main>
-      <DataTableReactive/>
-      <VDivider class="ma-12" />
-      <DataTableNonReactive/>
+      <router-view/>
     </v-main>
   </v-app>
 </template>
