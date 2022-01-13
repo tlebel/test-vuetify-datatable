@@ -1,10 +1,27 @@
 <script>
+import Vue from 'vue'
+
+const store = Vue.observable({
+  consoleLog: false
+})
+
 export default {
   name: 'App',
 
-  data: () => ({
-    //
-  }),
+  provide: {
+    store
+  },
+
+  computed: {
+    consoleLog: {
+      get() {
+        return store.consoleLog;
+      },
+      set(value) {
+        store.consoleLog = value
+      }
+    },
+  },
 };
 </script>
 
@@ -41,16 +58,12 @@ export default {
         <v-tab to="/reactive">Reactive</v-tab>
       </v-tabs>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-spacer/>
+      <v-switch
+        v-model="consoleLog"
+        :label="(consoleLog ? 'Hide' : 'Show') + ' Console Log'"
+        hide-details
+      />
     </v-app-bar>
 
     <v-main>
@@ -58,3 +71,9 @@ export default {
     </v-main>
   </v-app>
 </template>
+
+<style lang="scss" scoped>
+.v-tabs { 
+  width: auto;
+}
+</style>

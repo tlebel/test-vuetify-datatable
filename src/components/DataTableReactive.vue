@@ -1,6 +1,8 @@
 <script>
 
 export default {
+  inject: ['store'],
+
   data: () => ({
     dialog: false,
     dialogDelete: false,
@@ -51,18 +53,18 @@ export default {
   },
 
   created () {
-    console.log('Reactive - Created');
+    if (this.store.consoleLog) console.log('Reactive - Created');
     this.initialize()
   },
 
   destroyed() {
-    console.log('Reactive - Destroyed');
+    if (this.store.consoleLog) console.log('Reactive - Destroyed');
   },
 
   methods: {
     async initialize () {
       this.desserts = await (await fetch('./data.json')).json()
-      console.log('Desserts object', this.desserts);
+      if (this.store.consoleLog) console.log('Desserts object', this.desserts);
     },
 
     editItem (item) {

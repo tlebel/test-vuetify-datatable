@@ -17,6 +17,8 @@ function deepFreeze (object) {
 }
 
 export default {
+  inject: ['store'],
+
   data: () => ({
     dialog: false,
     dialogDelete: false,
@@ -67,26 +69,26 @@ export default {
   },
 
   created () {
-    console.log('Non Reactive - Created');
+    if (this.store.consoleLog) console.log('Non Reactive - Created');
     this.initialize()
   },
 
   destroyed() {
-    console.log('Non Reactive - Destroyed');
+    if (this.store.consoleLog) console.log('Non Reactive - Destroyed');
   },
 
 
   methods: {
     async initialize () {
       this.desserts = (await (await fetch('./data.json')).json()).map(item => deepFreeze(item))
-      console.log('Desserts object', this.desserts);
+      if (this.store.consoleLog) console.log('Desserts object', this.desserts);
     },
 
     editItem (item) {
       this.editedIndex = this.desserts.indexOf(item)
       this.editedItem = Object.assign({}, JSON.parse(JSON.stringify(item)))
 
-      console.log(this.editedIndex, this.editedItem)
+      if (this.store.consoleLog) console.log(this.editedIndex, this.editedItem)
       this.dialog = true
     },
 
@@ -94,7 +96,7 @@ export default {
       this.editedIndex = this.desserts.indexOf(item)
       this.editedItem = Object.assign({}, JSON.parse(JSON.stringify(item)))
 
-      console.log(this.editedIndex, this.editedItem)
+      if (this.store.consoleLog) console.log(this.editedIndex, this.editedItem)
       this.dialogDelete = true
     },
 
